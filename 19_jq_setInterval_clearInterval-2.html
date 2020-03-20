@@ -1,0 +1,84 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+    
+    <!-- jQuery import 방식1 -->
+    <script src="js/jquery-3.4.1.min.js"></script>
+    
+    <!-- jQuery import 방식2-->
+<!--<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>-->
+    
+<script>
+    var subject = ['Java', 'HTML', 'CSS', 'JavaScript', 'jQuery', 'JSP'];
+    var index = 0;
+    var timer = 0;
+    
+    //목록보여주기 실행
+    function start() {
+        timer = setInterval(function(){
+            console.log(index + " : " + subject[index]);
+            $("#myDiv").html(subject[index]);
+            index++;
+            if(index >= subject.length){
+                index = 0;
+            }
+        }, 1000);
+    }
+    
+    //목록보여주기 중단
+   function stop() {
+        clearInterval(timer);
+    }
+    
+    //함수연결
+    $(function(){
+        $("#list").click(start);
+        $("#stop").click(stop);
+    });
+    
+    
+    /* Teacher----------------------------------
+    var subject = ['Java', 'HTML', 'CSS', 'JavaScript', 'jQuery', 'JSP'];
+    var timer = null;
+    var idx = 0;
+    
+    function displaySubject() {
+        $("#myDiv").html(subject[idx++]);
+        if (idx >= subject.length) idx = 0;
+    }
+    
+    //목록 보여주기 실행
+    function start() {
+        idx = 0;
+        console.log("function start() 실행");
+        //타이머 객체가 없으면 생성
+        if (timer == null) {
+            timer = setInterval(displaySubject, 1000);
+        }
+        console.log("timer : " + timer);
+    }
+    
+    //목록 보여주기 중단
+    function stop() {
+        console.log("function stop() 실행");
+        clearInterval(timer);
+        timer = null;
+    }
+    
+    */
+</script>
+</head>
+<body>
+    <button onclick="start()">목록보여주기(HTML이벤트연결)</button>
+    <button onclick="stop()">중지(HTML이벤트)</button>
+    <hr>
+
+    <button id="list">목록보여주기(HTML이벤트연결)</button>
+    <button id="stop">중지(HTML이벤트)</button>
+    <hr>
+    
+    <div id="myDiv">Java</div>
+</body>
+</html>

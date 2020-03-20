@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>키보드 이벤트</title>
+    
+    <!-- jQuery import 방식1 -->
+    <script src="js/jquery-3.4.1.min.js"></script>
+    
+    <!-- jQuery import 방식2-->
+<!--<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>-->
+    
+<script>
+    //키보드관련 이벤트
+    //발생순서 : keydown -> keypress -> keyup
+    //keyup : 한 번만 발생
+    //keydown, keypress : 키가 눌린 상태에서 계속 발생
+    //a : keydown, keypress, keyup 한번씩 한번만 발생
+    //aaaaaaaa : keydown, keypress, ..., keydown, keypress + keyup(마지막에 딱 뗄 때!)
+    $(function(){
+        $("#pwd").keydown(function(event){
+            console.log("> keydown 이벤트 발생-키코드 : " + event.which);
+        });
+        $("#pwd").keypress(function(){
+            console.log(">> keypress 이벤트 발생");
+        });
+        $("#pwd").keyup(function(){
+            console.log("---- keyup 이벤트 발생");
+            $("#myDiv").text(""); //키보드 입력시 문구 삭제처리
+        });
+        
+        //비밀번호 확인란에 키입력되면 비밀번호와 비교 후 결과 출력
+        $("#pwd2").keyup(function(){
+            console.log("===> pw2 keyup 이벤트 발생");
+            if($("#pwd").val() == $("#pwd2").val()) {
+                $("#myDiv").text("비밀번호가 일치합니다.");
+            } else {
+                $("#myDiv").text("비밀번호가 일치하지 않습니다.");
+            } //text(), html()의 차이는 태그를 출력하느냐 마느냐!!!!!!
+        });
+        
+    });
+    
+</script>
+</head>
+<body>
+    <p>비밀번호 : 
+        <input type="password" name="pwd" id="pwd">
+    </p>
+    <p>비밀번호확인 :
+        <input type="password" name="pwd2" id="pwd2">
+    </p>
+    <div id="myDiv">암호를 입력하세요</div>
+</body>
+</html>

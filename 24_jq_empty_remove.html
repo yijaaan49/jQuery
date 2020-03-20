@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>empty, remove</title>
+    
+    <!-- jQuery import 방식1 -->
+    <script src="js/jquery-3.4.1.min.js"></script>
+    
+    <!-- jQuery import 방식2-->
+<!--<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>-->
+    
+<script>
+    //$(document).ready(function(){});
+    //$().ready(function(){});
+    $(function(){
+        //empty() : 기준태그의 자녀태그를 모두 삭제
+        $("#empty").click(function(){
+            $("#myDiv").empty();
+        });
+        
+        //remove() : 기준태그부터 전체 다 삭제
+        $("#remove").click(function(){
+            $("#myDiv").remove();
+        });
+        
+        //-----------------
+        //append() : child 추가
+        $("#append").click(function(){
+            $("#myDiv").append("<p>append 버튼으로 추가</p>"); 
+        });
+        
+        //html() : 내용읽어오기
+        //html(태그/텍스트) : 기존 내용을 태그,텍스트로 바꾸기
+        $("#html").click(function(){
+            console.log("html(): " + $("#html").html());
+            $("#myDiv").html("<p>html() 사용 추가</p>")
+        });
+        
+    });
+</script>
+<style>
+    #myDiv { border : 2px solid blue; height: 200px; }
+    p { background-color : yellow; }
+    
+</style>
+</head>
+<body>
+    <button id="empty">초기화(empty)</button>
+    <button id="remove">삭제(remove)</button>
+    <button id="append">추가(append)</button>
+    <button id="html">수정(html메소드)</button>
+    <hr>
+
+    <div id="myDiv">
+        <p>Java</p>
+        <p>HTML</p>
+        <p>CSS</p>
+    </div>
+    <hr>
+    <h2>div 다음에 있는 h2 태그</h2>
+</body>
+</html>

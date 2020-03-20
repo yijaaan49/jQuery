@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+    
+    <!-- jQuery import 방식1 -->
+    <script src="js/jquery-3.4.1.min.js"></script>
+    
+    <!-- jQuery import 방식2-->
+<!--<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>-->
+<style>
+    div {
+        width : 320px;
+        margin : 0 auto;
+        position : relative;
+    }
+    div > a {
+        /* 위치설정 */
+        position : absolute;
+        top: 150px;
+        left : 20px;
+        background-color: yellow;
+        
+        /* 모양설정 */
+        width: 50px;
+        height: 40px;
+        border-radius: 25%;
+        
+        /* 텍스트 설정 */
+        text-decoration: none;
+        text-align: center;
+        line-height: 40px; /* 세로방향 중앙정렬 */
+    }
+    div > a:last-child {
+        left: 250px;
+    }
+    
+</style>   
+<script>
+    //next버튼 : 다음이미지 표시, prev버튼 : 이전이미지 표시
+    $(function(){
+        var imgNum = 1;
+        
+        //img태그의 src값 변경
+        $("#next").click(function(){
+            imgNum++;
+            if (imgNum > 10) { imgNum = 1; }
+            if (imgNum < 10) { imgNum = "0" + imgNum; }
+            $("img").prop("src", "images/bimg"+ imgNum + ".jpg");
+        });
+        
+        imgNum = 11;
+        $("#prev").click(function(){
+            imgNum--;
+            if (imgNum < 1) { imgNum = 10; }
+            if (imgNum < 10) { imgNum = "0" + imgNum; }
+            $("img").prop("src", "images/bimg" + imgNum + ".jpg");
+        });
+    });
+</script>
+
+</head>
+<body>
+    <div>
+        <img src="images/bimg01.jpg" alt="상품이미지">
+        <a id="prev" href="#">prev</a>
+        <a id="next" href="#">next</a>
+    </div>
+</body>
+</html>

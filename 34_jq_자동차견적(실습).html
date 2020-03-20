@@ -1,0 +1,136 @@
+
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>자동차 견적</title>
+    <script src="js/jquery-3.4.1.min.js"></script>
+
+<style>
+    #carZone {
+        width: 600px;
+        margin: auto;
+        /* border: 1px solid black; */
+    }
+    h1 { text-align: center; }
+    #car {
+        border-collapse: collapse;
+        width: 100%;
+    }
+    #car th, td {
+        border: 1px solid black;
+        text-align: center;
+    }
+    #car thead { background-color: gray; }
+    #totalTxt { background-color: gray; }
+    #total {
+        border: none;
+        text-align: center;
+        font-size: 1.5em;
+        background-color: white;
+    }
+</style>
+<script>
+    $(function(){
+        var initValue = parseInt($("#total").val());
+        $(".opt").change(function(){
+            var total = initValue;
+            $(".opt:checked").each(function(idx, obj){
+                total += parseInt($(obj).val());
+            });
+            $("#total").val(total);
+            console.log(">> 선택값 : " + total);
+        });
+        
+        $("#green").change(function(){
+            $("img").prop("src", "images/car4.jpg");
+        });
+        $("#red").change(function(){
+            $("img").prop("src", "images/car2.jpg");
+        });
+        $("#blue").change(function(){
+            $("img").prop("src", "images/car3.jpg");
+        });
+        $("button").click(function(){
+            $("img").prop("src", "images/car1.jpg");
+            $("input[type='radio']").prop("checked", false);
+        });
+    });
+</script>  
+    
+</head>
+<body>
+<div id="carZone">
+	<h1>자동차 견적</h1>
+    <p><img src="images/car1.jpg" alt="자동차이미지"></p>
+    <table id="car">
+        <colgroup>
+            <col width="50%">
+            <col width="30%">
+        </colgroup>
+        <thead>
+            <tr>
+                <th>옵 션</th>
+                <th>추 가 가 격</th>
+                <th>색상</th>
+                <th>선택여부</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>인조가죽시트</td>
+                <td>250000</td>
+                <td>
+                    <input type="radio" name="color" value="green" id="green"> green
+                </td>
+                <td>
+                    <input type="checkbox" value="250000" id="opt1" class="opt" name="opt1">
+                </td>
+            </tr>
+            <tr>
+                <td>네비게이션</td>
+                <td>300000</td>
+                <td>
+                    <input type="radio" name="color" value="gray" id="red"> red
+                </td>
+                <td>
+                    <input type="checkbox" value="300000" id="opt2" class="opt" name="opt2">
+                </td>
+            </tr>
+            <tr>
+                <td>썬루프</td>
+                <td>440000</td>
+                <td>
+                    <input type="radio" name="color" value="gray" id="blue"> blue
+                </td>
+                <td>
+                    <input type="checkbox" value="440000" id="opt3" class="opt" name="opt3">
+                </td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td id="totalTxt">차량금액(옵션포함)
+                <button>색상초기화</button>
+                </td>
+                <td colspan="3">
+                    <input type="text" value="20000000" id="total" name="total" disabled>
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+    
+</div>    
+	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+      
+</body>
+</html>
+
+
+
+
+
+
+
+
+

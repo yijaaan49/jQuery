@@ -1,0 +1,110 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+    
+    <!-- jQuery import 방식1 -->
+    <script src="js/jquery-3.4.1.min.js"></script>
+    
+    <!-- jQuery import 방식2-->
+<!--<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>-->
+    
+<script>
+    
+    //jQuery 사용으로 문서(document)가 준비가 된 후
+    $(function(){
+        //요소(element) 선택자(요소명) : 해당 태그를 선택
+        //li태그 찾고, 클래스 bg(background) 추가
+        $("li").addClass("bg");
+        
+        //클래스 선택(.) : 해당 클래스명을 가진 요소 선택
+        $(".js").addClass("cr");
+        
+        //아이디 선택(#) : 해당 아이디명을 가진 요소 선택
+        $("#jsp").addClass("cg");
+        //-------------------------------------
+        
+        //자식, 자손 태그 컨트롤
+        //자식(자녀) 선택자(>) : 하위 child 요소 선택
+        $("ul>li").addClass("horizontal");
+        $("hr").addClass("clear");
+        
+        //=====================================
+        
+        //자손 선택자(빈칸) : 부모태그 + 빈칸(spacebar) + 자손태그
+        $("div p").addClass("bg");
+        $("div p").addClass("sizeUp"); //div 자손
+        
+        $("div>p").addClass("bg_aqua"); //div '바로 아래'에 있는 p태그(자녀child)
+        $("div>p").addClass("cr");
+        $("div>div>p").addClass("bold");
+        
+        //HTML 태그에 적용된 클래스명 삭제
+        $("#jsp").removeClass("bg");
+    });
+</script>
+<style>
+    .bg {
+        background-color: yellow;
+    }
+    .cr {
+        color: red;
+    }
+    .cg {
+        color: green;
+    }
+    .cb {
+        color: blue;
+    }
+    
+    .horizontal {
+        float: left;
+        list-style: none;
+        margin: 10px;
+    }
+    .clear {
+        clear: both;
+    }
+    
+    .sizeUp {
+        font-size: 1.5em;
+    }
+    .bg_aqua {
+        background-color: aqua;
+    }
+    .bold {
+        font-weight: bold;
+    }
+</style>
+</head>
+<body>
+    <ul>
+        <li>Java</li>
+        <li>HTML5 &amp; CSS3</li>
+        <li class="js">JavaScript &amp; jQuery</li>
+        <li id="jsp">Servlet &amp; JSP</li>
+    </ul>
+    <hr>
+    <ol>
+        <li>Java</li>
+        <li>HTML5 &amp; CSS3</li>
+        <li class="js">JavaScript &amp; jQuery</li>
+        <li>Servlet &amp; JSP</li>
+    </ol>
+    <hr>
+    <div>
+        <p>div &gt; p태그</p>
+        <div>
+            <span>
+                <p>div &gt; div &gt; span &gt; p태그</p>
+            </span>
+            <span>div &gt; div &gt; span</span>            
+        </div>
+        <div>
+            <p>div &gt; div &gt; p태그</p>
+        </div>
+        <p>div &gt; p태그</p>
+    </div>
+</body>
+</html>

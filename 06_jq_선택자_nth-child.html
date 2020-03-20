@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>선택자 nth-child</title>
+    <!-- jQuery import 방식2 -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script>
+    $(function(){
+        $("ul").css("background-color", "aqua");
+        $("ul>li").css("border", "1px solid black")
+                  .css("margin", "3px 0");
+        //$("ul>li:first").css("background-color", "yellow");
+        //$("ul>li:last").css("background-color", "orange");
+        
+        //----------------------------
+        //:even, :odd - 0번 인덱스부터 시작
+        /*
+        $("ul>li:odd").css("background-color", "yellow");
+        $("ul>li:even").css("background-color", "orange");
+        */
+        
+        //-----------------------------
+        //:nth-child(n) - n번째부터 시작(0번 없음)
+        //$("ul>li:nth-child(1)").css("background-color", "yellow");
+        //$("ul>li:nth-child(2n)").css("background-color", "yellow"); //2의배수(짝수)
+        //$("ul>li:nth-child(2n+1)").css("background-color", "yellow"); //홀수
+        //$("ul>li:nth-child(3n+1)").css("background-color", "yellow");
+        
+        //------------------------
+        //slice(시작값인덱스) : 시작위치에서 끝까지 선택(시작값 0부터)
+        //$("ul>li").slice(2).css("background-color", "yellow"); //3[2]부터 끝까지
+        
+        //slice(시작인덱스, 끝인덱스) : 시작은 포함, 끝은 불포함
+        //$("ul>li").slice(1, 6).css("background-color", "yellow"); //2[1]부터 [6]앞까지
+        
+        //slice 사용시 음수 사용하는 경우 : 뒤쪽 기준
+        //$("ul>li").slice(-3).css("background-color", "yellow"); //뒤에서 3개
+        //$("ul>li").slice(-3, -1).css("background-color", "yellow");
+        
+        //children(선택자) : 자녀(child) 태그 중에 선택
+        $("ul:first").css("border", "2px solid blue");
+        $("ul:first").children().css("background-color", "yellow");
+        //$("ul:first").children("li:nth-child(2)").css("background-color", "orange");
+        $("ul:first").children("li:first").next().css("background-color", "orange");
+        
+        //--------------------------
+        $("h1, h1+ul>li:eq(2)").css("color", "red");
+        $(".li3").css("font-size", "2em");
+        
+        
+        
+    });
+</script>
+</head>
+<body>
+	<h1>제이쿼리 선택자</h1>
+    <ul>
+        <li>menu 1</li>
+        <li>menu 2</li>
+        <li class="li3">menu 3
+            <ol>
+                <li>sub 1</li>
+                <li>sub 2</li>
+            </ol>
+        </li>
+        <li>menu 4</li>
+        <li>menu 5</li>
+    </ul>
+    <ul>
+        <li>menu2 - 1</li>
+        <li>menu2 - 2</li>
+        <li class="li3">menu2 - 3</li>
+    </ul>
+    
+    
+	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</body>
+</html>
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,111 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+    $("document").ready(function(){
+		//카테고리
+	    function Category(value) { 
+	        this.value = value; 
+			this.length = 0; 
+	    } 
+
+		function addCategory(category, value) { 
+		    category[category.length] = new Category(value); 
+			category.length++; 
+	    }
+	    
+	        var category = new Category();
+	    
+	        addCategory(category, "대분류");
+	        addCategory(category, "운동");
+	        addCategory(category, "음악");
+	        addCategory(category, "미술");
+
+	        addCategory(category[1], "중분류");
+	        addCategory(category[1], "구기");
+	        addCategory(category[1], "헬스");
+
+	        addCategory(category[1][1], "소분류");
+	        addCategory(category[1][1], "야구");
+	        addCategory(category[1][1], "축구");
+	        addCategory(category[1][1], "배구");
+
+	        addCategory(category[1][2], "소분류");
+	        addCategory(category[1][2], "유산소");
+	        addCategory(category[1][2], "무산소");
+
+	        addCategory(category[2], "중분류");
+	        addCategory(category[2], "악기");
+	        addCategory(category[2], "노래");
+
+	        addCategory(category[2][1], "소분류");
+	        addCategory(category[2][1], "현악기");
+	        addCategory(category[2][1], "관악기");
+	        addCategory(category[2][1], "타악기");
+
+	        addCategory(category[2][2], "소분류");
+	        addCategory(category[2][2], "성악");
+	        addCategory(category[2][2], "실용음악");
+
+	        addCategory(category[3], "중분류");
+	        addCategory(category[3], "그림");
+	        addCategory(category[3], "공예");
+
+	        addCategory(category[3][1], "소분류");
+	        addCategory(category[3][1], "회화");
+	        addCategory(category[3][1], "일러스트");
+	        addCategory(category[3][1], "캘리그라피");
+
+	        addCategory(category[3][2], "소분류");
+	        addCategory(category[3][2], "도예");
+	        addCategory(category[3][2], "자수");
+	   
+	    
+	    function initForm(form) { 
+	        form.subject.length = category.length; 
+	        for (i = 0; i < category.length; i++)
+	            form.subject[i].text = category[i].value; 
+	        form.subject.selectedIndex = 0; 
+	        form.contents.selectedIndex = 0;
+	    }
+	    
+	    function change_subject(form) { 
+	        var i = form.subject.selectedIndex; 
+	        form.contents.length = category[i].length; 
+	        for (j = 0; j < form.contents.length; j++) 
+	            form.contents[j].text = category[i][j].value; 
+	        form.contents.selectedIndex = 0; 
+	        change_contents(form); 
+	    } 
+
+	    function change_contents(form) { 
+	        var i = form.subject.selectedIndex 
+	        var j = form.contents.selectedIndex; 
+	        form.components.length = category[i][j].length; 
+	        for (k = 0; k < form.components.length; k++) 
+	            form.components[k].text = category[i][j][k].value; 
+	        form.components.selectedIndex = 0; 
+	    }
+	    
+	});
+    
+</script>
+</head>
+<body>
+    <form name="form" method="post">
+        <table>
+            <tr>
+                <th>카테고리</th> 
+				<td>
+					<select name="subject" onchange="change_subject(this.form)"></select> 
+					<select name="contents" onchange="change_contents(this.form)"></select> 
+					<select name="components"></select>
+          		</td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>

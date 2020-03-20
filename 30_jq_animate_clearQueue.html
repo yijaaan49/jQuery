@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>움직임 animate</title>
+    
+    <!-- jQuery import 방식1 -->
+    <script src="js/jquery-3.4.1.min.js"></script>
+    
+    <!-- jQuery import 방식2-->
+<!--<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>-->
+<style>
+    #myDiv {
+        position: absolute;
+    }
+</style>
+<script>
+    //.animate({속성값}, 밀리초) : 위치만큼 이동(밀리초 동안)
+    $(function(){
+        //우측으로 300px 이동 후 되돌아오기 : 2개 동작
+        $("#run").click(function(){
+            $("#myDiv").animate({"margin-left": "300px"}, 3000)
+                       .animate({"margin-left": "0px"}, 3000);
+        });
+        
+        //한번 stop 처리 : 현재 작동하는 동작이 멈춤
+        $("#stop").click(function(){
+            $("#myDiv").stop();
+        });
+       
+        //두번연속 stop 처리 
+        $("#stopstop").click(function(){
+            $("#myDiv").stop().stop();
+        });
+        
+        //clearQueue : 예정된 작업 취소(삭제)
+        $("#clearQueueStop").click(function(){
+            //현재진행중인 작업 취소 : stop()
+            //예정된작업(큐에 있는 작업) 취소 : clearQueue()
+            //-->예정된작업 + 현재진행중인 움직 모두 취소
+            $("#myDiv").clearQueue().stop(); 
+        });
+    });
+</script>
+</head>
+<body>
+    <button id="run">run</button>
+    <button id="stop">stop</button> 
+    <button id="stopstop">stop-stop</button>
+    <button id="clearQueueStop">clearQueue and stop</button>
+    
+    <hr>
+    <div id="myDiv">
+        <img src="images/image1.gif">
+    </div>
+</body>
+</html>

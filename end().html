@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+
+    <!-- jQuery import 방식1 -->
+    <script src="js/jquery-3.4.1.min.js"></script>
+
+    <!-- jQuery import 방식2-->
+    <!--<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>-->
+
+    <script>
+        $(function() {
+            console.log($("p").html());
+            console.log($("p").find("span").html());
+            console.log($("p").find("span").end().html());
+        });
+
+    </script>
+</head>
+
+<body>
+    <p>
+        p-element 입니다
+        <span> p - span element입니다</span>
+    </p>
+</body>
+<script>
+    (function(w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({
+            'gtm.start': new Date().getTime(),
+            event: 'gtm.js'
+        });
+        var f = d.getElementsByTagName(s)[0],
+            j = d.createElement(s),
+            dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src =
+            '//www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-W8XZJT');
+
+</script>
+
+</html>

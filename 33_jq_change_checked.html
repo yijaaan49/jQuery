@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+    
+    <!-- jQuery import 방식1 -->
+    <script src="js/jquery-3.4.1.min.js"></script>
+        
+<script>
+    $(function(){
+        //select 값 변경시 change 이벤트 발생
+        $("#sel").change(function(){
+            console.log("--- select값 변경 ---");
+            console.log("> 선택값(JS): " + this.value);
+            console.log("> 선택값(jQ): " + $(this).val());
+        });
+        
+        //radio 값 변경시 change 이벤트 발생
+        $("input[type='radio']").change(function(){
+            console.log("--- radio값 변경 ---");
+            console.log("> 선택값 : " + this.value);
+        });
+        
+        //checkbox 값 변경시 change 이벤트 발생
+        //click도 동일하게 적용 : 체크, 체크해제 둘다 변경작업이므로
+        $("input[type='checkbox']").change(function(){
+            console.log("--- checkbox값 변경 ---");
+            console.log("> 선택값 : " + $(this).prop("checked"));
+            
+            //:checked : 체크된 것만
+            //.each(function(인덱스, 현재객체){});
+            var str = "";
+            $("input[type='checkbox']:checked").each(function(idx,curObj){
+                if(idx == 0) {
+                    str += "ck=" + $(curObj).val();
+                } else {
+                    str += "&ck=" + $(curObj).val();
+                }
+            });
+            console.log(">> 선택값전체 : " + str);
+        });
+        
+    });
+</script>
+</head>
+<body>
+    <form>
+        <label for="sel">선택: </label><!--select의 id와 연결-->
+        <select name="sel" id="sel">
+            <option value="a">a1</option>
+            <option value="b">b2</option>
+            <option value="c">c3</option>
+            <option value="d">d4</option>
+        </select>
+        <hr>
+        
+        <input type="radio" name="gender" value="남"> 남자
+        <input type="radio" name="gender" value="여"> 여자
+        <hr>
+        
+        <p>
+            <input type="checkbox" name="ck" value="x1"> 체크1
+            <input type="checkbox" name="ck" value="x2"> 체크2
+            <input type="checkbox" name="ck" value="x3"> 체크3
+        </p>
+        <button type="submit">전송</button>
+    </form>
+
+</body>
+</html>

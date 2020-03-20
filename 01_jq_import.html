@@ -1,0 +1,74 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+    
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    
+<script>
+    window.onload = function(){
+        document.getElementById("id1").style.color = "orange";
+    }
+    //window.onload -> jQuery방식
+    
+    //방식1 ; jQuery(document).ready(function(){});
+    //jQuery -> $ 대체사용 가능
+    /*
+    jQuery(document).ready(function(){
+        jQuery("#id1").css("background-color", "yellow");
+    */
+    $(document).ready(function(){
+        $("#id1").css("background-color", "yellow");
+    });
+    
+    //------------
+    //방식2 : $().ready(function(){});
+    $().ready(function(){
+        $("#id1").css("color", "blue");
+        $("#id2").css("background-color", "orange");
+        $("#id3").css("background-color", "aqua");
+    
+        $(".cl_h3").css("background-color", "beige"); //반복문 안써도 됨!!
+        $(".cl_h3").css("color", "maroon");
+    });
+    
+    //-----------
+    //방식3
+    $(function(){
+        $("#id4").css("background-color", "yellow");
+        
+        $("div h3").css("background-color", "orange");
+        //JS는 가중치가 없음. 무조건 가장 나중에 작성된 코드가 적용됨
+        
+        $(".cl_p").css("background-color", "beige");
+        $(".cl_p").css("color", "maroon");
+        
+        $("div>span>h1").css("background-color", "magenta");
+    });
+    
+</script>
+</head>
+<body>
+    <h1 id="id1">제이쿼리(jQuery) - id1</h1>
+    <h3 id="id2">제이쿼리1 - id2</h3>
+    <h3 id="id3">제이쿼리2 - id3</h3>
+    
+    <h3 class="cl_h3">제이쿼리3 - cl_h3</h3>
+    <h3 class="cl_h3">제이쿼리4 - cl_h3</h3>
+    <hr>
+    
+    <div>
+        <h1>--div안에 h1</h1>
+        <h3 id="id4">--div안에 h3 : id4</h3>
+        <h3>--div안에 h3</h3>
+        <h3>--div안에 h3</h3>
+        <span>
+            <h1>--|--div &gt; span &gt; h1</h1>
+            <p class="cl_p">--|--div &gt; span &gt; p1</p>
+            <p class="cl_p">--|--div &gt; span &gt; p2</p>
+        </span>
+    </div>
+    
+</body>
+</html>
